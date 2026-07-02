@@ -44,7 +44,7 @@ fn main() {
             println!("  • {}", name);
         }
         println!();
-        println!("Usage: systeminfo --logo <name>");
+        println!("Usage: fetchy --logo <name>");
         return;
     }
 

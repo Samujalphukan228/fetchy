@@ -1,9 +1,9 @@
 use clap::Parser;
 
-/// systeminfo — a fast, friendly system info tool for your terminal.
+/// Fetchy — a fast, friendly system info tool for your terminal.
 #[derive(Parser, Debug)]
 #[command(
-    name = "systeminfo",
+    name = "fetchy",
     version,
     about = "A fast, friendly system info tool for your terminal",
     long_about = "Fetchy displays system information alongside a colorful ASCII logo.\n\
@@ -27,7 +27,7 @@ pub struct Cli {
     #[arg(long, value_name = "DISTRO")]
     pub logo: Option<String>,
 
-    /// Write a starter config file to ~/.config/systeminfo/config.toml and exit
+    /// Write a starter config file to ~/.config/fetchy/config.toml and exit
     #[arg(long)]
     pub init_config: bool,
 

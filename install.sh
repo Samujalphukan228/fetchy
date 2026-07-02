@@ -3,9 +3,11 @@
 set -e
 
 REPO="https://github.com/Samujalphukan228/fetchy"
-BIN_NAME="systeminfo"
+BIN_NAME="fetchy"
 BIN_DIR="$HOME/.local/bin"
-CONFIG_DIR="$HOME/.config/systeminfo"
+CONFIG_DIR="$HOME/.config/fetchy"
+LEGACY_BIN="systeminfo"
+LEGACY_CONFIG="$HOME/.config/systeminfo"
 VERSION="1.0.0"
 FORCE_BUILD=0
 
@@ -80,10 +82,27 @@ uninstall() {
         _removed=1
     fi
 
+    if [ -f "$BIN_DIR/$LEGACY_BIN" ]; then
+        rm -f "$BIN_DIR/$LEGACY_BIN"
+        success "removed legacy $BIN_DIR/$LEGACY_BIN"
+        _removed=1
+    fi
+
+    if [ -f "/usr/local/bin/$LEGACY_BIN" ]; then
+        rm -f "/usr/local/bin/$LEGACY_BIN" 2>/dev/null \
+            || sudo rm -f "/usr/local/bin/$LEGACY_BIN"
+        success "removed legacy /usr/local/bin/$LEGACY_BIN"
+        _removed=1
+    fi
+
     [ "$_removed" -eq 1 ] || warn "no installed binary found"
 
     if [ -d "$CONFIG_DIR" ]; then
         warn "config kept at $CONFIG_DIR (remove manually if needed)"
+    fi
+
+    if [ -d "$LEGACY_CONFIG" ]; then
+        warn "legacy config kept at $LEGACY_CONFIG (remove manually if needed)"
     fi
 
     RC=$(detect_shell_rc)
@@ -93,7 +112,7 @@ uninstall() {
 
 download_binary() {
     TARGET=$(detect_target) || return 1
-    URL="$REPO/releases/download/v$VERSION/systeminfo-$TARGET"
+    URL="$REPO/releases/download/v$VERSION/fetchy-$TARGET"
     TMP_BIN=$(mktemp)
 
     info "downloading pre-built binary ($TARGET)"

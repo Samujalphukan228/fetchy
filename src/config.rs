@@ -39,7 +39,7 @@ impl Default for Config {
 
 pub fn config_path() -> Option<PathBuf> {
     let mut path = dirs::config_dir()?;
-    path.push("systeminfo");
+    path.push("fetchy");
     path.push("config.toml");
     Some(path)
 }

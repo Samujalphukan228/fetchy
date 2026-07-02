@@ -11,28 +11,28 @@ curl -sSf https://raw.githubusercontent.com/Samujalphukan228/fetchy/master/insta
 source ~/.bashrc   # or ~/.zshrc
 ```
 
-Then run `systeminfo`.
+Then run `fetchy`.
 
 ## Usage
 
 ```bash
-systeminfo                   # full output
-systeminfo --compact         # shorter view
-systeminfo --no-logo         # hide logo
-systeminfo --no-colors       # plain text
-systeminfo --logo arch       # force a logo
-systeminfo --list-logos      # list available logos
-systeminfo --json            # JSON output
-systeminfo --init-config     # create config file
+fetchy                   # full output
+fetchy --compact         # shorter view
+fetchy --no-logo         # hide logo
+fetchy --no-colors       # plain text
+fetchy --logo arch       # force a logo
+fetchy --list-logos      # list available logos
+fetchy --json            # JSON output
+fetchy --init-config     # create config file
 ```
 
 ## Configuration
 
 ```bash
-systeminfo --init-config
+fetchy --init-config
 ```
 
-Creates `~/.config/systeminfo/config.toml`.
+Creates `~/.config/fetchy/config.toml`.
 
 ## Uninstall
 
