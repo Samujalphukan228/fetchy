@@ -143,7 +143,8 @@ install_rust_if_needed() {
 build_binary() {
     command -v cargo >/dev/null 2>&1 || . "$HOME/.cargo/env"
 
-    _repo=$(local_repo)
+    _repo=""
+    _repo=$(local_repo) || _repo=""
     if [ -n "$_repo" ]; then
         info "building from local checkout"
         (cd "$_repo" && cargo build --release)
